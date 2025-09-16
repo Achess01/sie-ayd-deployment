@@ -1,0 +1,22 @@
+# Env files
+.env
+
+# Docker volumes
+postgres_data/
+jenkins_data/
+
+# Backend source (será clonado por Jenkins)
+backend/
+sie-ayd/
+sie-ayd-frontend/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/

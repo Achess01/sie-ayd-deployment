@@ -1,0 +1,40 @@
+# Multi-stage build para optimizar la imagen
+FROM gradle:8.3-jdk21 AS build
+
+WORKDIR /app
+
+# Copiar archivos de configuración de Gradle
+COPY build.gradle .
+COPY settings.gradle .
+COPY gradle.properties* ./
+
+# Copiar wrapper de Gradle si existe
+COPY gradlew* ./
+COPY gradle/ ./gradle/
+
+# Copiar código fuente
+COPY src ./src
+
+# Construir la aplicación
+RUN gradle clean build -x test --no-daemon
+
+# Imagen final más ligera
+FROM openjdk:21-jre-slim
+
+WORKDIR /app
+
+# Crear usuario no-root por seguridad
+RUN addgroup --system spring && adduser --system spring --ingroup spring
+USER spring:spring
+
+# Copiar el JAR desde la etapa de build
+COPY --from=build /app/build/libs/*.jar app.jar
+
+# Exponer el puerto
+EXPOSE 8080
+
+# Variables de entorno por defecto
+ENV SPRING_PROFILES_ACTIVE=prod
+
+# Comando de inicio
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
