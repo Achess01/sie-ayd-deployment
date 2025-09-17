@@ -16,7 +16,6 @@ USER jenkins
 # Install plugins
 RUN jenkins-plugin-cli --plugins \
     git \
-    docker-pipeline \
     pipeline-stage-view \
     github-pullrequest \
     workflow-aggregator \
