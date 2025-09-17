@@ -17,7 +17,7 @@ pipeline {
         stage('Checkout Backend Code') {
             steps {
                 dir('backend') {
-                    git branch: 'main', url: "${BACKEND_REPO}", credentialsId: 'github-ssh-credentials'
+                    git branch: 'main', url: "${BACKEND_REPO}", credentialsId: 'ssh-jenkins'
                 }
             }
         }
