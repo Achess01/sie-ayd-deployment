@@ -32,23 +32,23 @@ pipeline {
         
         stage('Build Docker Images') {
             steps {
-                sh 'docker-compose build backend --no-cache'
+                sh 'docker compose build backend --no-cache'
             }
         }
         
         stage('Deploy Application') {
             steps {
-                sh 'docker-compose down backend || true'
-                sh 'docker-compose up -d backend'
+                sh 'docker compose down backend || true'
+                sh 'docker compose up -d backend'
             }
         }
     }
     post {
         always {
-            sh 'docker-compose logs'
+            sh 'docker compose logs'
         }
         failure {
-            sh 'docker-compose down'
+            sh 'docker compose down'
         }
     }
 }
