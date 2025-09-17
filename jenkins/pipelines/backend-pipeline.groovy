@@ -31,7 +31,7 @@ pipeline {
         
         stage('Build Docker Images') {
             steps {
-                sh 'docker compose build backend --no-cache'
+                sh 'docker compose build --no-cache backend'
             }
         }
         
