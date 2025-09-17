@@ -3,8 +3,7 @@ pipeline {
     
     environment {
         DOCKER_COMPOSE_FILE = 'docker-compose.yml'
-        BACKEND_REPO = 'https://github.com/Achess01/sie-ayd.git'
-        DEPLOYMENT_REPO = 'https://github.com/Achess01/sie-ayd.git'
+        BACKEND_REPO = 'git@github.com:Achess01/sie-ayd.git'
     }
     
     stages {
