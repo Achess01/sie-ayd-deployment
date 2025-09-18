@@ -1,18 +1,18 @@
 pipeline {
     agent any
-    
+
     environment {
         DOCKER_COMPOSE_FILE = 'docker-compose.yml'
         BACKEND_REPO = 'git@github.com:Achess01/sie-ayd.git'
     }
-    
+
     stages {
         stage('Checkout Deployment Repo') {
             steps {
                 checkout scm
             }
         }
-        
+
         stage('Checkout Backend Code') {
             steps {
                 dir('backend') {
@@ -20,7 +20,7 @@ pipeline {
                 }
             }
         }
-        
+
         // stage('Build and Test Backend') {
         //     steps {
         //         dir('backend') {
@@ -28,13 +28,13 @@ pipeline {
         //         }
         //     }
         // }
-        
+
         stage('Build Docker Images') {
             steps {
-                sh 'docker compose build backend'
+                sh 'docker compose build --no-cache backend'
             }
         }
-        
+
         stage('Deploy Application') {
             steps {
                 sh 'docker compose down backend || true'
