@@ -34,7 +34,8 @@ services:
     ports:
       - "8090:8080"
     depends_on:
-      - postgresql
+      postgresql:
+        condition: service_healthy
     networks:
       - app-network
     restart: unless-stopped
