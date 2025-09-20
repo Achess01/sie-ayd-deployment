@@ -42,7 +42,6 @@ services:
 
 volumes:
   postgres_data:
-  jenkins_data:
 
 networks:
   app-network:

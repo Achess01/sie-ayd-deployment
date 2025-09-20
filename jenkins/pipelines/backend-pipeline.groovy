@@ -37,7 +37,7 @@ pipeline {
 
         stage('Deploy Application') {
             steps {
-                sh 'docker compose down backend || true'
+                sh 'docker compose down || true'
                 sh 'docker compose up -d backend'
             }
         }
@@ -47,7 +47,7 @@ pipeline {
             sh 'docker compose logs backend || true'
         }
         failure {
-            sh 'docker compose down backend || true'
+            sh 'docker compose down || true'
         }
         success {
             sh 'echo "Deployment successful!"'
