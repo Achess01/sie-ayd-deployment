@@ -35,7 +35,7 @@ services:
       EMAIL_SENDER_PASSWORD: ${EMAIL_SENDER_PASSWORD}
       ACCESS_KEY: ${ACCESS_KEY}
       SECRET_KEY: ${SECRET_KEY}
-      BUCKET_NAME: ${BUCKET_NAME}
+      BUCKET: ${BUCKET}
       REGION: ${REGION}
     ports:
       - "8090:8080"
