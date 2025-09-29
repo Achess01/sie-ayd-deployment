@@ -8,8 +8,7 @@ COPY tsconfig*.json ./
 
 RUN npm ci
 
-COPY src ./src
-COPY public ./public
+COPY . .
 
 RUN npm run build --prod
 
