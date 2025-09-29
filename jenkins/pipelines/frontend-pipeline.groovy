@@ -17,7 +17,7 @@ pipeline {
         stage('Checkout Frontend Code') {
             steps {
                 dir('frontend') {
-                    git branch: 'main', url: "${FRONTEND_REPO}", credentialsId: 'ssh-jenkins'
+                    git branch: 'master', url: "${FRONTEND_REPO}", credentialsId: 'ssh-jenkins'
                 }
             }
         }
