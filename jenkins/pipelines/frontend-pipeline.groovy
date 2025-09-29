@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKER_COMPOSE_FILE = 'docker-compose.yml'
-        FRONTEND_REPO = 'git@github.com:Achess01/sie-ayd-frontend.git'
+        FRONTEND_REPO = 'git@github.com:Pinto324/sie-ayd-frontend.git'
         COMPOSE_PROJECT_NAME = 'sie-ayd-deployment'
     }
 
